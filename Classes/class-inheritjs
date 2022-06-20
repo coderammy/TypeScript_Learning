@@ -1,0 +1,94 @@
+//Inheritance
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Department = /** @class */ (function () {
+    function Department(id, name) {
+        this.id = id;
+        this.name = name;
+        //   static realdate:2020
+        this.enpolyees = [];
+    }
+    Department.createEmolyee = function (name) {
+        //for static
+        return { name: name };
+    };
+    Department.prototype.addEmployee = function (enpolyees) {
+        this.enpolyees.push(enpolyees);
+    };
+    Department.prototype.describe = function () {
+        console.log("department:::::" + this.id);
+    };
+    return Department;
+}());
+//  extends Inheritance
+var ItDepartment = /** @class */ (function (_super) {
+    __extends(ItDepartment, _super);
+    //   admins:string[]
+    function ItDepartment(id, admins) {
+        var _this = _super.call(this, id, "IT") || this;
+        _this.admins = admins;
+        _this.admins = admins;
+        return _this;
+    }
+    return ItDepartment;
+}(Department));
+var AccountDepart = /** @class */ (function (_super) {
+    __extends(AccountDepart, _super);
+    // private lastReport: string;
+    // get mostRecent (){
+    //     if(this.lastReport) {
+    //         return this.lastReport
+    //     } 
+    //     throw new Error ('No result found')
+    // }
+    // set mostRecent(value:string ) {
+    //     this.addReport(value )
+    // }
+    function AccountDepart(id, report) {
+        var _this = _super.call(this, id, "IT") || this;
+        _this.report = report;
+        return _this;
+        // this.lastReport = report[0]
+    }
+    //Overriding Properties & the protected modifier
+    AccountDepart.prototype.addEmployee = function (name) {
+        if (name === "max") {
+            return;
+        }
+        this.enpolyees.push(name);
+    };
+    AccountDepart.prototype.addReport = function (text) {
+        this.report.push(text);
+    };
+    AccountDepart.prototype.getReport = function () {
+        console.log(this.report);
+    };
+    return AccountDepart;
+}(Department));
+var employe1 = Department.createEmolyee("maatt");
+console.log(employe1);
+// console.log( Department.realdate)
+var Accounts = new ItDepartment("d1", ["max"]);
+Accounts.addEmployee("max");
+console.log(Accounts);
+Accounts.addEmployee("max");
+Accounts.addEmployee("manu");
+var newAccounting = new AccountDepart("d3", ["ammy"]);
+// console.log(newAccounting.mostRecent)
+newAccounting.addEmployee("ammy");
+newAccounting.getReport();
+newAccounting.describe();
+console.log(newAccounting);
