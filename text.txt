@@ -1,0 +1,50 @@
+public 
+All members of a class in Typescript are public. 
+All the public members can be accessed anywhere any restrictions.
+class employee  {
+    public pen:string
+    employee:string
+}
+
+let emp = new employee();
+emp.pen = 123;
+emp.employee = "aman";
+
+
+private
+The private access modifier ensures that class members are visible only to that class and are not accessible outside the containing class.
+
+
+class person {
+    private personcode:number;
+    personName:string
+}
+
+let family = new person();
+family.personcode = 123; // compiler error
+family.personName="aman" 
+
+protected
+The protected access modifier is similar to the private access modifier, except that protected members can be accessed using their deriving classes.
+
+class teachers {
+    protected name :string;
+    public fullname:string;
+
+    constructor(name:string,code:string){
+        this.name = name;
+        this.fullname = code;
+    }
+}
+
+class subTeachers extends teachers{
+    private department:string;
+
+    constructor(name:string,code:string,department:string){
+        super(name,code);
+        this.department= department
+    }
+}
+
+let student = new subTeachers("aman giri",123,"bcom");
+empObj.name// compiler error
